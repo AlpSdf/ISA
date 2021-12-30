@@ -10,5 +10,11 @@ package Logica;
  * @author jorge
  */
 public class Director {
+
+    public Director() {
+    }
+    
+    
+    
     
 }

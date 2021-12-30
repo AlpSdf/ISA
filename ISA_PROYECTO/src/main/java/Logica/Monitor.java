@@ -10,5 +10,9 @@ package Logica;
  * @author jorge
  */
 public class Monitor {
+
+    public Monitor() {
+    }
+    
     
 }
