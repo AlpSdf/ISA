@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA_iteracion3";
     private final String user = "postgres";
-    private final String password = "password";
+    private final String password = "dpc292001";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 

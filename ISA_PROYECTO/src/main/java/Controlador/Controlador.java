@@ -25,6 +25,7 @@ public class Controlador {
     private static Vista_Monitor vista_Monitor = new Vista_Monitor();
     private static Vista_Recepcionista vista_Recepcionista = new Vista_Recepcionista();
     private static Vista_Socio vista_Socio = new Vista_Socio();
+    private static Vista_darBajaSocio vista_darbaja = new Vista_darBajaSocio();
     
     private String id_actual = "";
     
@@ -49,6 +50,7 @@ public class Controlador {
         vista_Monitor.setVisible(false);
         vista_Recepcionista.setVisible(false);
         vista_Socio.setVisible(false);
+        vista_darbaja.setVisible(false);
         
         
         inicio.setLocationRelativeTo(null);
@@ -60,6 +62,7 @@ public class Controlador {
         vista_Monitor.setLocationRelativeTo(null);
         vista_Recepcionista.setLocationRelativeTo(null);
         vista_Socio.setLocationRelativeTo(null);
+        vista_darbaja.setLocationRelativeTo(null);
     }
     
     
@@ -135,5 +138,10 @@ public class Controlador {
     public void mostrar_pantalla_socio(){
         vista_socio_inicio_sesion.setVisible(false);
         vista_Socio.setVisible(true);
+    }
+    public void mostrar_pantalla_dardebaja(){
+        vista_Socio.setVisible(false);
+        vista_darbaja.setVisible(true);
+        
     }
 }
