@@ -5,13 +5,27 @@
  */
 package Logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jorge
  */
 public class Director {
 
+    private ArrayList<String> FechasBajaEntrenadores = new ArrayList<String>();
+    private ArrayList<String> Actividades = new ArrayList<String>();
+    
     public Director() {
+    }
+    
+    public void recibirDatosBajasEntrenadores(String fecha, String motivo) {
+        String txt = "-" + fecha + ":" + motivo;
+        FechasBajaEntrenadores.add(txt);
+    }
+    
+    public void recibirActividades(ArrayList<String> list) {
+        Actividades = list;
     }
     
     

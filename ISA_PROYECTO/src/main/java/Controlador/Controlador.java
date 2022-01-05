@@ -6,6 +6,7 @@
 package Controlador;
 import Logica.*;
 import Vistas.*;
+import java.util.ArrayList;
 /**
  *
  * @author jorge
@@ -16,6 +17,7 @@ public class Controlador {
     }
     
     private Acceso_Base_Datos acceso_base = new Acceso_Base_Datos();
+    private Director director = new Director();
     private static Inicio inicio = new Inicio();
     private static Vista_empleado_inicio_sesion vista_empleado_inicio_sesion = new Vista_empleado_inicio_sesion();
     private static Vista_socio_inicio_sesion vista_socio_inicio_sesion = new Vista_socio_inicio_sesion();
@@ -26,6 +28,8 @@ public class Controlador {
     private static Vista_Recepcionista vista_Recepcionista = new Vista_Recepcionista();
     private static Vista_Socio vista_Socio = new Vista_Socio();
     private static Vista_darBajaSocio vista_darbaja = new Vista_darBajaSocio();
+    private static Vista_avisarAusencia vista_avisarAusencia = new Vista_avisarAusencia();
+    private static Vista_gestionActividades vista_gestionActividades = new Vista_gestionActividades();
     
     private String id_actual = "";
     
@@ -42,6 +46,7 @@ public class Controlador {
 
     public static void main(String[] args) {
         inicio.setVisible(true);
+        vista_avisarAusencia.setVisible(false);
         vista_empleado_inicio_sesion.setVisible(false);
         vista_socio_inicio_sesion.setVisible(false);
         vista_Director.setVisible(false);
@@ -54,6 +59,7 @@ public class Controlador {
         
         
         inicio.setLocationRelativeTo(null);
+        vista_avisarAusencia.setLocationRelativeTo(null);
         vista_empleado_inicio_sesion.setLocationRelativeTo(null);
         vista_socio_inicio_sesion.setLocationRelativeTo(null);
         vista_Director.setLocationRelativeTo(null);
@@ -74,6 +80,15 @@ public class Controlador {
     public void mostrar_socio_inicio_sesion(){
         inicio.setVisible(false);
         vista_socio_inicio_sesion.setVisible(true);
+    }
+    
+    public void mostrar_avisarAusencia() {
+        vista_Entrenador.setVisible(false);
+        vista_avisarAusencia.setVisible(true);
+    }
+    
+    public void mostrar_gestionActividades() {
+        vista_gestionActividades.setVisible(true);
     }
     
     public void mostrar_pantalla_inicio(){
@@ -143,5 +158,18 @@ public class Controlador {
         vista_Socio.setVisible(false);
         vista_darbaja.setVisible(true);
         
+    }
+    
+    public void enviar_DatosBajasEntrenadores(String fecha, String motivo) {
+        director.recibirDatosBajasEntrenadores(fecha, motivo);
+    }
+    
+    public void enviarDatosActividades(ArrayList<String> list, int i) {
+        if (i==0) {
+            vista_gestionActividades.enviar_Actividades(list);
+        }
+        else {
+            director.recibirActividades(list);
+        }
     }
 }

@@ -5,13 +5,19 @@
  */
 package Logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jorge
  */
 public class Entrenador {
 
+    private ArrayList<String> horasReservadas = new ArrayList<String>();
+    private ArrayList<String> horasLibres = new ArrayList<String>();
+    
     public Entrenador() {
+        
     }
     
     
