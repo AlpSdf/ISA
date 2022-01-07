@@ -54,6 +54,11 @@ public class Vista_Director extends javax.swing.JFrame {
         });
 
         jButton3.setText("Consultar Valoraciones");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Gestión actividades");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +68,11 @@ public class Vista_Director extends javax.swing.JFrame {
         });
 
         jButton5.setText("Gestión plantilla");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,6 +131,16 @@ public class Vista_Director extends javax.swing.JFrame {
         this.setVisible(false);
         controlador.mostrar_valoraciones_enviadas();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        controlador.mostrar_valoraciones();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.setVisible(false);
+        controlador.mostrar_plantilla();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

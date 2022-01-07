@@ -32,6 +32,8 @@ public class Controlador {
     private static Vista_gestionActividades vista_gestionActividades = new Vista_gestionActividades();
     private static Vista_anadirActividad vista_anadirActividad = new Vista_anadirActividad();
     private static Vista_enviar_valoraciones_negativas vista_enviar_valoraciones_negativas = new Vista_enviar_valoraciones_negativas();
+    private static Vista_Valoraciones vista_Valoraciones = new Vista_Valoraciones();
+    private static Vista_Plantilla vista_plantilla = new Vista_Plantilla();
     
     private String id_actual = "";
     
@@ -60,9 +62,13 @@ public class Controlador {
         vista_darbaja.setVisible(false);
         vista_anadirActividad.setVisible(false);
         vista_enviar_valoraciones_negativas.setVisible(false);
+        vista_Valoraciones.setVisible(false);
+        vista_plantilla.setVisible(false);
         
         
         inicio.setLocationRelativeTo(null);
+        vista_plantilla.setLocationRelativeTo(null);
+        vista_Valoraciones.setLocationRelativeTo(null);
         vista_enviar_valoraciones_negativas.setLocationRelativeTo(null);
         vista_anadirActividad.setLocationRelativeTo(null);
         vista_avisarAusencia.setLocationRelativeTo(null);
@@ -88,6 +94,10 @@ public class Controlador {
         vista_socio_inicio_sesion.setVisible(true);
     }
     
+    public void mostrar_valoraciones() {
+        vista_Valoraciones.setVisible(true);
+    }
+    
     public void mostrar_valoraciones_enviadas() {
         vista_enviar_valoraciones_negativas.setVisible(true);
     }
@@ -100,6 +110,10 @@ public class Controlador {
     public void mostrar_gestionActividades() {
         vista_gestionActividades.setVisible(true);
         vista_gestionActividades.cargar_Datos();
+    }
+    
+    public void mostrar_plantilla() {
+        vista_plantilla.setVisible(true);
     }
     
     public void mostrar_pantalla_inicio(){
