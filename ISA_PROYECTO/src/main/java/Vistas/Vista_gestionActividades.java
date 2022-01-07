@@ -18,12 +18,16 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
      * Creates new form Vista_gestionActividades
      */
     private Controlador controlador = new Controlador();
-    private ArrayList<String> listaActividades = new ArrayList<String>();
+    private ArrayList<String[]> listaActividades = new ArrayList<String[]>();
     private int i=0;
     
     public Vista_gestionActividades() {
         initComponents();
-        jTextField2.setText("");
+        if (!listaActividades.isEmpty()) {
+            jTextField2.setText(listaActividades.get(0)[0]);
+            jTextField2.setText(listaActividades.get(0)[1]);
+            jTextField2.setText(listaActividades.get(0)[2]);
+        }
     }
 
     /**
@@ -45,6 +49,7 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,8 +65,18 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         jTextField2.setEditable(false);
 
         jButton1.setText("Siguiente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Anterior");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Monitor asignado:");
 
@@ -71,6 +86,13 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Añadir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -88,7 +110,10 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(63, 63, 63)
+                                .addComponent(jButton4))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -127,7 +152,8 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -138,6 +164,29 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         this.setVisible(false);
         controlador.mostrar_pantalla_director();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.setVisible(false);
+        controlador.mostrar_pantalla_anadir_actividad();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (i==0) {}
+        else {
+            i--;
+            cargar_Datos();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (i==listaActividades.size()-1) {}
+        else {
+            i++;
+            cargar_Datos();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,19 +223,32 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         });
     }
     
-    public void recibir_Actividades(ArrayList<String> list) {
+    public void recibir_Actividades(ArrayList<String[]> list) {
         listaActividades = list;
     }
     
-    public void enviar_Actividades(ArrayList<String> list)
-    {
-        controlador.enviarDatosActividades(list, 1);
+    public void enviar_Actividades (String[] actividad) {
+        listaActividades.add(actividad);
+    }
+    
+    public void cargar_Datos() {
+        if (!listaActividades.isEmpty()) {
+            jTextField2.setText(listaActividades.get(i)[0]);
+            jTextField1.setText(listaActividades.get(i)[1]);
+            jTextField3.setText(listaActividades.get(i)[2]);
+        } 
+        else {
+            jTextField2.setText(" ");
+            jTextField1.setText(" ");
+            jTextField3.setText(" ");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

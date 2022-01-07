@@ -30,6 +30,8 @@ public class Controlador {
     private static Vista_darBajaSocio vista_darbaja = new Vista_darBajaSocio();
     private static Vista_avisarAusencia vista_avisarAusencia = new Vista_avisarAusencia();
     private static Vista_gestionActividades vista_gestionActividades = new Vista_gestionActividades();
+    private static Vista_anadirActividad vista_anadirActividad = new Vista_anadirActividad();
+    private static Vista_enviar_valoraciones_negativas vista_enviar_valoraciones_negativas = new Vista_enviar_valoraciones_negativas();
     
     private String id_actual = "";
     
@@ -56,9 +58,13 @@ public class Controlador {
         vista_Recepcionista.setVisible(false);
         vista_Socio.setVisible(false);
         vista_darbaja.setVisible(false);
+        vista_anadirActividad.setVisible(false);
+        vista_enviar_valoraciones_negativas.setVisible(false);
         
         
         inicio.setLocationRelativeTo(null);
+        vista_enviar_valoraciones_negativas.setLocationRelativeTo(null);
+        vista_anadirActividad.setLocationRelativeTo(null);
         vista_avisarAusencia.setLocationRelativeTo(null);
         vista_empleado_inicio_sesion.setLocationRelativeTo(null);
         vista_socio_inicio_sesion.setLocationRelativeTo(null);
@@ -82,6 +88,10 @@ public class Controlador {
         vista_socio_inicio_sesion.setVisible(true);
     }
     
+    public void mostrar_valoraciones_enviadas() {
+        vista_enviar_valoraciones_negativas.setVisible(true);
+    }
+    
     public void mostrar_avisarAusencia() {
         vista_Entrenador.setVisible(false);
         vista_avisarAusencia.setVisible(true);
@@ -89,6 +99,7 @@ public class Controlador {
     
     public void mostrar_gestionActividades() {
         vista_gestionActividades.setVisible(true);
+        vista_gestionActividades.cargar_Datos();
     }
     
     public void mostrar_pantalla_inicio(){
@@ -160,16 +171,15 @@ public class Controlador {
         
     }
     
+    public void mostrar_pantalla_anadir_actividad() {
+        vista_anadirActividad.setVisible(true);
+    }
+    
     public void enviar_DatosBajasEntrenadores(String fecha, String motivo) {
         director.recibirDatosBajasEntrenadores(fecha, motivo);
     }
     
-    public void enviarDatosActividades(ArrayList<String> list, int i) {
-        if (i==0) {
+    public void enviarDatosActividades(String[] list) {
             vista_gestionActividades.enviar_Actividades(list);
-        }
-        else {
-            director.recibirActividades(list);
-        }
     }
 }
