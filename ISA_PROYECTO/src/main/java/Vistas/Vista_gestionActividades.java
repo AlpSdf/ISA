@@ -18,15 +18,24 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
      * Creates new form Vista_gestionActividades
      */
     private Controlador controlador = new Controlador();
-    private ArrayList<String[]> listaActividades = new ArrayList<String[]>();
+    private ArrayList<String> listaActividades = new ArrayList<>();
     private int i=0;
     
     public Vista_gestionActividades() {
         initComponents();
+        listaActividades = controlador.cargar_actividades();
+//        for (int j = 0; j < listaActividades.size(); j++) {
+//            System.out.println(listaActividades.get(j)[0]);
+//            System.out.println(listaActividades.get(j)[1]);
+//            System.out.println(listaActividades.get(j)[2]);
+//            System.out.println(listaActividades.get(j)[3]);
+//        }
         if (!listaActividades.isEmpty()) {
-            jTextField2.setText(listaActividades.get(0)[0]);
-            jTextField1.setText(listaActividades.get(0)[1]);
-            jTextField3.setText(listaActividades.get(0)[2]);
+            String[] actividad = listaActividades.get(0).split(";");
+            jTextField_nombre.setText(actividad[0]);
+            jTextField_hora.setText(actividad[1]);
+            jTextField_aforo.setText(actividad[2]);
+            jTextField_sala.setText(actividad[3]);
         }
     }
 
@@ -41,15 +50,17 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField_hora = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField_nombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField_aforo = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_sala = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,11 +69,11 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre actividad:");
 
-        jTextField1.setEditable(false);
+        jTextField_hora.setEditable(false);
 
         jLabel3.setText("Hora inicio:");
 
-        jTextField2.setEditable(false);
+        jTextField_nombre.setEditable(false);
 
         jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +89,9 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Monitor asignado:");
+        jLabel4.setText("Aforo:");
 
-        jTextField3.setEditable(false);
+        jTextField_aforo.setEditable(false);
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -96,12 +107,16 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Sala:");
+
+        jTextField_sala.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jLabel1)
@@ -111,24 +126,26 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(63, 63, 63)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4)))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextField_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_aforo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_sala, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(96, 96, 96)
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(23, 23, 23)))))
                 .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,21 +157,25 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
+                    .addComponent(jTextField_aforo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jTextField_sala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
+                    .addComponent(jButton1)
                     .addComponent(jButton4))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,24 +244,24 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
         });
     }
     
-    public void recibir_Actividades(ArrayList<String[]> list) {
-        listaActividades = list;
-    }
     
-    public void enviar_Actividades (String[] actividad) {
-        listaActividades.add(actividad);
+    public void actualizar_Actividades () {
+        listaActividades=controlador.cargar_actividades();
     }
     
     public void cargar_Datos() {
         if (!listaActividades.isEmpty()) {
-            jTextField2.setText(listaActividades.get(i)[0]);
-            jTextField1.setText(listaActividades.get(i)[1]);
-            jTextField3.setText(listaActividades.get(i)[2]);
+            String[] actividad = listaActividades.get(i).split(";");
+            jTextField_nombre.setText(actividad[0]);
+            jTextField_hora.setText(actividad[1]);
+            jTextField_aforo.setText(actividad[2]);
+            jTextField_sala.setText(actividad[3]);
         } 
         else {
-            jTextField2.setText(" ");
-            jTextField1.setText(" ");
-            jTextField3.setText(" ");
+            jTextField_nombre.setText(" ");
+            jTextField_hora.setText(" ");
+            jTextField_aforo.setText(" ");
+            jTextField_sala.setText(" ");
         }
     }
 
@@ -253,8 +274,10 @@ public class Vista_gestionActividades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField_aforo;
+    private javax.swing.JTextField jTextField_hora;
+    private javax.swing.JTextField jTextField_nombre;
+    private javax.swing.JTextField jTextField_sala;
     // End of variables declaration//GEN-END:variables
 }

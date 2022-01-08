@@ -23,10 +23,7 @@ public class Vista_Valoraciones extends javax.swing.JFrame {
     
     public Vista_Valoraciones() {
         initComponents();
-        valoraciones.add("EjemploValoracion1");
-        valoraciones.add("EjemploValoracion2");
-        valoraciones.add("EjemploValoracion3");
-        valoraciones.add("EjemploValoracion4");
+        valoraciones= controlador.cargar_valoraciones();
         if (!valoraciones.isEmpty()) {
             jTextField1.setText(valoraciones.get(0));
         }

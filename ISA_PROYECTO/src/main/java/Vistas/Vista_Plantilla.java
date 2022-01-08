@@ -17,20 +17,18 @@ public class Vista_Plantilla extends javax.swing.JFrame {
     /**
      * Creates new form Vista_Plantilla
      */
-    ArrayList<String[]> plantilla = new ArrayList<String[]>();
+    ArrayList<String> plantilla = new ArrayList<>();
     int i=0;
     
     private Controlador controlador = new Controlador();
     
     public Vista_Plantilla() {
         initComponents();
-        String[] empleadoUno = {"Pedro", "Monitor"};
-        String[] empleadoDos = {"Luis", "Limpiador"};
-        plantilla.add(empleadoUno);
-        plantilla.add(empleadoDos);
+        plantilla = controlador.cargar_plantilla();
         if (!plantilla.isEmpty()) {
-            jTextField1.setText(plantilla.get(0)[0]);
-            jTextField2.setText(plantilla.get(0)[1]);
+            String empleado[] = plantilla.get(0).split(";");
+            jTextField1.setText(empleado[0]);
+            jTextField2.setText(empleado[1]);
         }
     }
 
@@ -59,7 +57,7 @@ public class Vista_Plantilla extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("Puesto de trabajo:");
+        jLabel3.setText("ID Empleado:");
 
         jTextField1.setEditable(false);
 
@@ -107,7 +105,7 @@ public class Vista_Plantilla extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(51, Short.MAX_VALUE))
+                        .addContainerGap(77, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,8 +195,9 @@ public class Vista_Plantilla extends javax.swing.JFrame {
     
     public void cargar_Datos() {
         if (!plantilla.isEmpty()) {
-            jTextField1.setText(plantilla.get(i)[0]);
-            jTextField2.setText(plantilla.get(i)[1]);
+            String empleado[] = plantilla.get(i).split(";");
+            jTextField1.setText(empleado[0]);
+            jTextField2.setText(empleado[1]);
         } 
         else {
             jTextField1.setText(" ");

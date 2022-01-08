@@ -72,6 +72,7 @@ public class Controlador {
         vista_enviar_valoraciones_negativas.setLocationRelativeTo(null);
         vista_anadirActividad.setLocationRelativeTo(null);
         vista_avisarAusencia.setLocationRelativeTo(null);
+        vista_gestionActividades.setLocationRelativeTo(null);
         vista_empleado_inicio_sesion.setLocationRelativeTo(null);
         vista_socio_inicio_sesion.setLocationRelativeTo(null);
         vista_Director.setLocationRelativeTo(null);
@@ -193,7 +194,23 @@ public class Controlador {
         director.recibirDatosBajasEntrenadores(fecha, motivo);
     }
     
-    public void enviarDatosActividades(String[] list) {
-            vista_gestionActividades.enviar_Actividades(list);
+    public void actualizar_actividades(){
+        vista_gestionActividades.actualizar_Actividades();
+    }
+    
+    public void añadir_actividad(int id, String tipo, String horario,int aforo,int sala){
+        acceso_base.añadir_actividad(id,tipo,horario,aforo,sala);
+    }
+    
+    public ArrayList cargar_valoraciones(){
+        return acceso_base.obtener_valoraciones();
+    }
+    
+    public ArrayList cargar_actividades(){
+        return acceso_base.obtener_actividades();
+    }
+    
+    public ArrayList cargar_plantilla(){
+        return acceso_base.obtener_plantilla();
     }
 }
