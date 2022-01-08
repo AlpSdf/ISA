@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA_iteracion3";
     private final String user = "postgres";
-    private final String password = "password";
+    private final String password = "dpc292001";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 
@@ -164,5 +164,30 @@ public class Acceso_Base_Datos {
         }
         disconnect();
         return plantilla;
+    }
+    
+    public ArrayList obtener_datos_Socio(){
+        ArrayList<String> datos = new ArrayList<>();
+        String socio;
+        connect();
+        try {
+            String query = "SELECT * from socio";
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            
+            System.out.println("Listado de socios");
+            System.out.println("============================");
+            while(rs.next()){
+               System.out.println(rs.getString("numero_socio").trim()+" "+rs.getString("nombre").trim()+" "+rs.getString("telefono").trim()+" "+rs.getString("email").trim()
+               +" "+rs.getString("tipo_cuota").trim()+" "+rs.getString("numero_cuenta_bancaria").trim()+" "+rs.getString("id_empleado_empleado_entrenador").trim());
+            }
+            System.out.println("============================");
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return datos;
     }
 }

@@ -5,13 +5,8 @@
  */
 package Vistas;
 
-import Logica.Acceso_Base_Datos;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Controlador.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,12 +14,19 @@ import java.util.logging.Logger;
  */
 public class Vista_consultarDatosSocio extends javax.swing.JFrame {
 
-    private Acceso_Base_Datos acceso = new Acceso_Base_Datos();
-    private Connection conn = null;
-    private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
+    ArrayList<String> datos_socio = new ArrayList<>();
+    int i=0;
+    
+    private Controlador controlador = new Controlador();
     
     public Vista_consultarDatosSocio() {
         initComponents();
+        datos_socio = controlador.cargar_plantilla();
+        if (!datos_socio.isEmpty()) {
+            String empleado[] = datos_socio.get(0).split(";");
+            jTextField1.setText(empleado[0]);
+            
+        }
     }
 
     /**
@@ -37,12 +39,21 @@ public class Vista_consultarDatosSocio extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextField1.setEditable(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -54,11 +65,17 @@ public class Vista_consultarDatosSocio extends javax.swing.JFrame {
                 .addGap(207, 207, 207)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(210, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(124, 124, 124)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -67,24 +84,13 @@ public class Vista_consultarDatosSocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        try {
-            String query = "SELECT * from socio";
-            Statement stmnt = acceso.connect().createStatement();
-            ResultSet rs = stmnt.executeQuery(query);
-            
-            System.out.println("Listado de socios");
-            System.out.println("============================");
-            while(rs.next()){
-               System.out.println(rs.getString("numero_socio").trim()+" "+rs.getString("nombre").trim()+" "+rs.getString("telefono").trim()+" "+rs.getString("email").trim()
-               +" "+rs.getString("tipo_cuota").trim()+" "+rs.getString("numero_cuenta_bancaria").trim()+" "+rs.getString("id_empleado_empleado_entrenador").trim());
-            }
-            System.out.println("============================");
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            logger.log(Level.WARNING, "SQL Exception", ex);
-        }
+        controlador.cargar_datos_Socio();
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        controlador.mostrar_pantalla_socio();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,8 +126,19 @@ public class Vista_consultarDatosSocio extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void cargar_Datos() {
+        if (!datos_socio.isEmpty()) {
+            String empleado[] = datos_socio.get(i).split(";");
+            jTextField1.setText(empleado[0]);
+        } 
+        else {
+            jTextField1.setText(" ");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

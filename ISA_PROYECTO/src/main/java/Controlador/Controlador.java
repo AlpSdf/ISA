@@ -221,4 +221,8 @@ public class Controlador {
     public ArrayList cargar_plantilla(){
         return acceso_base.obtener_plantilla();
     }
+    
+    public ArrayList cargar_datos_Socio(){
+        return acceso_base.obtener_datos_Socio();
+    }
 }
