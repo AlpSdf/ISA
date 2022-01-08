@@ -34,6 +34,7 @@ public class Controlador {
     private static Vista_enviar_valoraciones_negativas vista_enviar_valoraciones_negativas = new Vista_enviar_valoraciones_negativas();
     private static Vista_Valoraciones vista_Valoraciones = new Vista_Valoraciones();
     private static Vista_Plantilla vista_plantilla = new Vista_Plantilla();
+    private static Vista_consultarDatosSocio vista_datosSocio = new Vista_consultarDatosSocio();
     
     private String id_actual = "";
     
@@ -64,6 +65,7 @@ public class Controlador {
         vista_enviar_valoraciones_negativas.setVisible(false);
         vista_Valoraciones.setVisible(false);
         vista_plantilla.setVisible(false);
+        vista_datosSocio.setVisible(false);
         
         
         inicio.setLocationRelativeTo(null);
@@ -82,6 +84,7 @@ public class Controlador {
         vista_Recepcionista.setLocationRelativeTo(null);
         vista_Socio.setLocationRelativeTo(null);
         vista_darbaja.setLocationRelativeTo(null);
+        vista_datosSocio.setLocationRelativeTo(null);
     }
     
     
@@ -188,6 +191,11 @@ public class Controlador {
     
     public void mostrar_pantalla_anadir_actividad() {
         vista_anadirActividad.setVisible(true);
+    }
+    
+    public void mostrar_pantalla_consultarSocio() {
+        vista_Recepcionista.setVisible(false);
+        vista_datosSocio.setVisible(true);
     }
     
     public void enviar_DatosBajasEntrenadores(String fecha, String motivo) {
