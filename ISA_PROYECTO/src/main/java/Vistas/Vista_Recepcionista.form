@@ -105,6 +105,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Imprimir informes de monitorizaci&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ConsultarDatosSocio">
       <Properties>
@@ -118,6 +121,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consulta cuadrantes de limpieza"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

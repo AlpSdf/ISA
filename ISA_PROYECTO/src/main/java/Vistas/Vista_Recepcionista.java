@@ -6,6 +6,7 @@
 package Vistas;
 
 import Controlador.Controlador;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,11 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
         });
 
         jButton3.setText("Imprimir informes de monitorización");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         ConsultarDatosSocio.setText("Consulta datos de socios");
         ConsultarDatosSocio.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +71,11 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
         });
 
         jButton5.setText("Consulta cuadrantes de limpieza");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,8 +133,26 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ConsultarDatosSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarDatosSocioActionPerformed
-        controlador.mostrar_pantalla_consultarSocio();
+         String id = JOptionPane.showInputDialog("Introduce el numero del socio: ");
+         String socio = controlador.consulta_datos_de_un_socio(id);
+         if (socio.equals(null)){
+             JOptionPane.showMessageDialog(null, "No hay datos para el id introducido");
+         }else{
+             controlador.mostrar_pantalla_consultarSocio(socio);
+         }
     }//GEN-LAST:event_ConsultarDatosSocioActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String id = JOptionPane.showInputDialog("Introduce el id del limpiador: ");
+        String datos = controlador.cuadrante_limpieza_limpiador(id);
+        JOptionPane.showMessageDialog(null, "A este limpiador le corresponden las siguientes zonas ---> " + datos);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Facturas imprimidas.");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

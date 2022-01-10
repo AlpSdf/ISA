@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA_iteracion3";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
     private final String user = "postgres";
-    private final String password = "dpc292001";
+    private final String password = "1234";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 
@@ -189,5 +189,38 @@ public class Acceso_Base_Datos {
         }
         disconnect();
         return datos;
+    }
+    public String cuadrante_limpieza(String id){
+        String limpiador = null;
+        connect();
+        try {
+            String query = "SELECT * from limpiador where id_empleado_empleado = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                limpiador = rs.getString(2);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+        return limpiador;
+    }
+    public String datos_de_un_socio(String id){
+        String socio = null;
+        connect();
+        try {
+            String query = "SELECT * from socio where numero_socio = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                socio = rs.getString(1)+","+rs.getString(2)+","+rs.getString(3)+","+rs.getString(4)+","+
+                        rs.getString(5)+","+rs.getString(6)+","+rs.getString(7)+","+rs.getString(8);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+        return socio;
     }
 }

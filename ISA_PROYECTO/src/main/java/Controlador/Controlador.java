@@ -34,7 +34,7 @@ public class Controlador {
     private static Vista_enviar_valoraciones_negativas vista_enviar_valoraciones_negativas = new Vista_enviar_valoraciones_negativas();
     private static Vista_Valoraciones vista_Valoraciones = new Vista_Valoraciones();
     private static Vista_Plantilla vista_plantilla = new Vista_Plantilla();
-    private static Vista_consultarDatosSocio vista_datosSocio = new Vista_consultarDatosSocio();
+    private static Vista_consulta_datos_socio vista_datosSocio = new Vista_consulta_datos_socio();
     
     private String id_actual = "";
     
@@ -197,6 +197,11 @@ public class Controlador {
         vista_Recepcionista.setVisible(false);
         vista_datosSocio.setVisible(true);
     }
+    public void mostrar_pantalla_consultarSocio(String socio) {
+        vista_datosSocio.introduce_socio(socio);
+        vista_Recepcionista.setVisible(false);
+        vista_datosSocio.setVisible(true);
+    }
     
     public void enviar_DatosBajasEntrenadores(String fecha, String motivo) {
         director.recibirDatosBajasEntrenadores(fecha, motivo);
@@ -224,5 +229,11 @@ public class Controlador {
     
     public ArrayList cargar_datos_Socio(){
         return acceso_base.obtener_datos_Socio();
+    }
+    public String cuadrante_limpieza_limpiador(String id){
+        return acceso_base.cuadrante_limpieza(id);
+    }
+    public String consulta_datos_de_un_socio(String id){
+        return acceso_base.datos_de_un_socio(id);
     }
 }
