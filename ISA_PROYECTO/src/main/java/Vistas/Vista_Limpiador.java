@@ -30,6 +30,9 @@ public class Vista_Limpiador extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        ConsultarDatosSocio = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +47,12 @@ public class Vista_Limpiador extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Asignacion zonas de trabajo");
+
+        ConsultarDatosSocio.setText("Cambio turno limpiadores");
+
+        jButton5.setText("Bajas empleado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,10 +60,20 @@ public class Vista_Limpiador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 425, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ConsultarDatosSocio)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
+                .addGap(98, 98, 98))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ConsultarDatosSocio, jButton3, jButton5});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -62,8 +81,16 @@ public class Vista_Limpiador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ConsultarDatosSocio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ConsultarDatosSocio, jButton3, jButton5});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,7 +137,10 @@ public class Vista_Limpiador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConsultarDatosSocio;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

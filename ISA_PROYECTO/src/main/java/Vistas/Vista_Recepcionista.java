@@ -44,28 +44,28 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
         jButton1.setText("CERRAR SESIÓN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cierresesion(evt);
             }
         });
 
         jButton3.setText("Imprimir informes de monitorización");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ImprimirInformes(evt);
             }
         });
 
         ConsultarDatosSocio.setText("Consulta datos de socios");
         ConsultarDatosSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultarDatosSocioActionPerformed(evt);
+                ConsultarDatosSocio(evt);
             }
         });
 
         jButton5.setText("Consulta cuadrantes de limpieza");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ConsultaCuadrante(evt);
             }
         });
 
@@ -111,13 +111,13 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cierresesion(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierresesion
         this.setVisible(false);
         controlador.setId_actual("");
         controlador.mostrar_pantalla_inicio();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cierresesion
 
-    private void ConsultarDatosSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarDatosSocioActionPerformed
+    private void ConsultarDatosSocio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarDatosSocio
          String id = JOptionPane.showInputDialog("Introduce el numero del socio: ");
          String socio = controlador.consulta_datos_de_un_socio(id);
          if (socio.equals(null)){
@@ -125,19 +125,19 @@ public class Vista_Recepcionista extends javax.swing.JFrame {
          }else{
              controlador.mostrar_pantalla_consultarSocio(socio);
          }
-    }//GEN-LAST:event_ConsultarDatosSocioActionPerformed
+    }//GEN-LAST:event_ConsultarDatosSocio
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void ConsultaCuadrante(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaCuadrante
         // TODO add your handling code here:
         String id = JOptionPane.showInputDialog("Introduce el id del limpiador: ");
         String datos = controlador.cuadrante_limpieza_limpiador(id);
         JOptionPane.showMessageDialog(null, "A este limpiador le corresponden las siguientes zonas ---> " + datos);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_ConsultaCuadrante
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ImprimirInformes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirInformes
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Facturas imprimidas.");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ImprimirInformes
 
     /**
      * @param args the command line arguments

@@ -85,7 +85,7 @@
         <Property name="text" type="java.lang.String" value="CERRAR SESI&#xd3;N"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cierresesion"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
@@ -93,7 +93,7 @@
         <Property name="text" type="java.lang.String" value="Imprimir informes de monitorizaci&#xf3;n"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImprimirInformes"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ConsultarDatosSocio">
@@ -101,7 +101,7 @@
         <Property name="text" type="java.lang.String" value="Consulta datos de socios"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultarDatosSocioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultarDatosSocio"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
@@ -109,7 +109,7 @@
         <Property name="text" type="java.lang.String" value="Consulta cuadrantes de limpieza"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultaCuadrante"/>
       </Events>
     </Component>
   </SubComponents>

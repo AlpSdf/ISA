@@ -30,6 +30,8 @@ public class Vista_Monitor extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        ConsultarDatosSocio = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +46,10 @@ public class Vista_Monitor extends javax.swing.JFrame {
             }
         });
 
+        ConsultarDatosSocio.setText("Bajas empleado");
+
+        jButton5.setText("Ver puntuacion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,9 +57,15 @@ public class Vista_Monitor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 449, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(ConsultarDatosSocio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,7 +74,11 @@ public class Vista_Monitor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ConsultarDatosSocio)
+                    .addComponent(jButton5))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,7 +126,9 @@ public class Vista_Monitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConsultarDatosSocio;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
