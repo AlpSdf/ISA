@@ -262,6 +262,9 @@ public class Controlador {
     public String socio_reserva_entrenador(String id){
         return acceso_base.socio_reserva_entrenador(id);
     }
+    public String socio_cancela_entrenador(String id){
+        return acceso_base.socio_cancela_entrenador(id);
+    }
     public String nombre_entrenador(String id){
         return acceso_base.nombre_entrenador(id);
     }

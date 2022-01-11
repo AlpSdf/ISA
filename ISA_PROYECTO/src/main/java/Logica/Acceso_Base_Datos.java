@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA_iteracion3";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
     private final String user = "postgres";
-    private final String password = "dpc292001";
+    private final String password = "1234";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 
@@ -279,7 +279,6 @@ public class Acceso_Base_Datos {
                 actividades.add(actividad);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         disconnect();
@@ -297,7 +296,6 @@ public class Acceso_Base_Datos {
                 total = Integer.parseInt(rs.getString(1));
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         disconnect();
@@ -311,7 +309,6 @@ public class Acceso_Base_Datos {
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         disconnect();
@@ -332,28 +329,60 @@ public class Acceso_Base_Datos {
                 horas_libres = Integer.parseInt(rs.getString(2));
                 id_entrenador = rs.getString(3);
             }
-            this.actualizar(id_socio,id_entrenador,horas_reservadas,horas_libres);
+            this.actualizarsocio(id_socio,id_entrenador);
+            this.actualizarentrenador(id_entrenador, (horas_reservadas + 1), (horas_libres - 1));
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         disconnect();
-        return id_entrenador;
+        return id_entrenador.trim();
     }
-    public void actualizar(String id_socio,String id_entrenador, int horas_r,int horas_l){
+    public String socio_cancela_entrenador(String id_socio){
+        connect();
+        String id_entrenador=null;
+        int horas_reservadas = 0;
+        int horas_libres = 0;
+        try {
+            String query = "select * from entrenador where id_empleado_empleado = (select id_empleado_empleado_entrenador from socio where numero_socio = " + id_socio +
+                    ")";
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                horas_reservadas = Integer.parseInt(rs.getString(1));
+                horas_libres = Integer.parseInt(rs.getString(2));
+                id_entrenador = rs.getString(3);
+            }
+            this.actualizarsocio(id_socio,null);
+            this.actualizarentrenador(id_entrenador, (horas_reservadas - 1), (horas_libres + 1));
+        } catch (SQLException ex) {
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return id_entrenador.trim();
+    }
+    public void actualizarsocio(String id_socio,String id_entrenador){
         try {
             String query = "UPDATE socio SET id_empleado_empleado_entrenador = " + id_entrenador + " WHERE numero_socio = " + id_socio;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-            String query1 = "UPDATE entrenador SET horas_libres = " + (horas_l-1) + " , horas_reservadas = " + (horas_r + 1) + " WHERE id_empleado_empleado = " + id_entrenador;
-            Statement stmnt1 = conn.createStatement();
-            ResultSet rs1 = stmnt.executeQuery(query);
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         
     }
+    public void actualizarentrenador(String id_entrenador, int horas_r,int horas_l){
+        try {
+            String query = "UPDATE entrenador SET horas_libres = " + horas_l + " , horas_reservadas = " + horas_r  + " WHERE id_empleado_empleado = " + id_entrenador;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            
+        } catch (SQLException ex) {
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        
+    }
+    
     
     public String nombre_entrenador(String id){
         connect();
@@ -362,9 +391,11 @@ public class Acceso_Base_Datos {
             String query = "select nombre from empleado where id_empleado = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-            nombre = rs.getString(1);
+            while(rs.next()){
+                nombre = rs.getString(1);
+            }
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             logger.log(Level.WARNING, "SQL Exception", ex);
         }
         disconnect();

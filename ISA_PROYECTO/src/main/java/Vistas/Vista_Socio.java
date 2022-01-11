@@ -75,6 +75,11 @@ public class Vista_Socio extends javax.swing.JFrame {
         });
 
         jButton5.setText("Cancelar clase con entrenador");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,6 +149,13 @@ public class Vista_Socio extends javax.swing.JFrame {
         String nombre_entrenador = controlador.nombre_entrenador(id_entrenador);
         JOptionPane.showMessageDialog(null, "Asignacion de entrenador terminada.Se te ha asignado con " + nombre_entrenador);
     }//GEN-LAST:event_ReservaCitaEntrenador
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String id_entrenador = controlador.socio_cancela_entrenador(this.id_socio);
+        String nombre_entrenador = controlador.nombre_entrenador(id_entrenador);
+        JOptionPane.showMessageDialog(null, "Su cita con " + nombre_entrenador + " se ha cancelado.");
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
