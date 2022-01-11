@@ -84,6 +84,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Asignacion zonas de trabajo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ConsultarDatosSocio">
       <Properties>
@@ -94,6 +97,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Bajas empleado"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

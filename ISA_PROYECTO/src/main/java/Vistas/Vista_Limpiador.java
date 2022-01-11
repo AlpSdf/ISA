@@ -6,6 +6,7 @@
 package Vistas;
 
 import Controlador.Controlador;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +15,15 @@ import Controlador.Controlador;
 public class Vista_Limpiador extends javax.swing.JFrame {
 
     private Controlador controlador = new Controlador();
+    private String id_limpiador;
     
     public Vista_Limpiador() {
         initComponents();
     }
 
+    public void recibirIdLimpiador(String txt){
+        id_limpiador = txt;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,10 +53,20 @@ public class Vista_Limpiador extends javax.swing.JFrame {
         });
 
         jButton3.setText("Asignacion zonas de trabajo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         ConsultarDatosSocio.setText("Cambio turno limpiadores");
 
         jButton5.setText("Bajas empleado");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +115,21 @@ public class Vista_Limpiador extends javax.swing.JFrame {
         controlador.setId_actual("");
         controlador.mostrar_pantalla_inicio();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String id = JOptionPane.showInputDialog("Introduce tu id de limpiador: ");
+        String datos = controlador.cuadrante_limpieza_limpiador(id);
+        JOptionPane.showMessageDialog(null, "Te corresponden las siguientes zonas ---> " + datos);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int confirmacion = JOptionPane.showConfirmDialog(null,"¿Estas segur@ que quieres darte de baja?");
+        if (confirmacion == JOptionPane.OK_OPTION){
+            controlador.bajaLimpiador(this.id_limpiador);
+            
+        }
+        controlador.mostrar_pantalla_inicio();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -244,6 +244,12 @@ public class Controlador {
     public void bajaSocio(String id){
         acceso_base.bajaSocio(id);
     }
+    public void bajaLimpiador(String id){
+        acceso_base.bajaLimpiador(id);
+    }
+    public void bajaMonitor(String id){
+        acceso_base.bajaMonitor(id);
+    }
     public ArrayList actividades_socio(){
         return acceso_base.obtener_actividades_socio();
     }

@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA_iteracion3";
     private final String user = "postgres";
-    private final String password = "1234";
+    private final String password = "dpc292001";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 
@@ -228,6 +228,28 @@ public class Acceso_Base_Datos {
         try {
             this.borraActividadesSocio(id);
             String query = "delete from socio where numero_socio = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+    }
+    public void bajaLimpiador(String id){
+        connect();
+        try {
+            String query = "delete from limpiador where id_empleado_empleado = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+    }
+    public void bajaMonitor(String id){
+        connect();
+        try {
+            String query = "delete from monitor where id_empleado_empleado = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
         } catch (SQLException ex) {
