@@ -6,6 +6,7 @@
 package Vistas;
 
 import Controlador.Controlador;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +15,15 @@ import Controlador.Controlador;
 public class Vista_Socio extends javax.swing.JFrame {
 
     private Controlador controlador = new Controlador();
+    private String id_socio;
     
     public Vista_Socio() {
         initComponents();
     }
-
+    
+    public void recibirIdSocio(String txt){
+        id_socio = txt;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,20 +49,30 @@ public class Vista_Socio extends javax.swing.JFrame {
         jButton1.setText("CERRAR SESIÓN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cierresesion(evt);
             }
         });
 
         DarDeBaja.setText("Dar de Baja");
         DarDeBaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DarDeBajaActionPerformed(evt);
+                BajaSocio(evt);
             }
         });
 
         jButton3.setText("Reservar actividades");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservaActividad(evt);
+            }
+        });
 
         jButton4.setText("Solicitar clase con entrenador");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservaCitaEntrenador(evt);
+            }
+        });
 
         jButton5.setText("Cancelar clase con entrenador");
 
@@ -66,23 +81,19 @@ public class Vista_Socio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(239, 239, 239)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(DarDeBaja))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DarDeBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,30 +102,48 @@ public class Vista_Socio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(114, 114, 114)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(DarDeBaja))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(DarDeBaja)
+                .addGap(20, 20, 20)
+                .addComponent(jButton5)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cierresesion(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierresesion
         this.setVisible(false);
         controlador.setId_actual("");
         controlador.mostrar_pantalla_inicio();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cierresesion
 
-    private void DarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DarDeBajaActionPerformed
+    private void BajaSocio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajaSocio
         // TODO add your handling code here:
-        controlador.mostrar_pantalla_dardebaja();
-    }//GEN-LAST:event_DarDeBajaActionPerformed
+        int confirmacion = JOptionPane.showConfirmDialog(null,"¿Estas segur@ que quieres darte de baja?");
+        if (confirmacion == JOptionPane.OK_OPTION){
+            controlador.bajaSocio(this.id_socio);
+            
+        }
+        controlador.mostrar_pantalla_inicio();
+        
+    }//GEN-LAST:event_BajaSocio
+
+    private void ReservaActividad(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservaActividad
+        // TODO add your handling code here:
+        controlador.mostrar_pantalla_actividadesSocio(this.id_socio);
+    }//GEN-LAST:event_ReservaActividad
+
+    private void ReservaCitaEntrenador(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservaCitaEntrenador
+        // TODO add your handling code here:
+        String id_entrenador = controlador.socio_reserva_entrenador(this.id_socio);
+        String nombre_entrenador = controlador.nombre_entrenador(id_entrenador);
+        JOptionPane.showMessageDialog(null, "Asignacion de entrenador terminada.Se te ha asignado con " + nombre_entrenador);
+    }//GEN-LAST:event_ReservaCitaEntrenador
 
     /**
      * @param args the command line arguments

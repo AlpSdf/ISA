@@ -15,7 +15,6 @@ public class Controlador {
 
     public Controlador() {
     }
-    
     private Acceso_Base_Datos acceso_base = new Acceso_Base_Datos();
     private Director director = new Director();
     private static Inicio inicio = new Inicio();
@@ -27,7 +26,6 @@ public class Controlador {
     private static Vista_Monitor vista_Monitor = new Vista_Monitor();
     private static Vista_Recepcionista vista_Recepcionista = new Vista_Recepcionista();
     private static Vista_Socio vista_Socio = new Vista_Socio();
-    private static Vista_darBajaSocio vista_darbaja = new Vista_darBajaSocio();
     private static Vista_avisarAusencia vista_avisarAusencia = new Vista_avisarAusencia();
     private static Vista_gestionActividades vista_gestionActividades = new Vista_gestionActividades();
     private static Vista_anadirActividad vista_anadirActividad = new Vista_anadirActividad();
@@ -35,6 +33,7 @@ public class Controlador {
     private static Vista_Valoraciones vista_Valoraciones = new Vista_Valoraciones();
     private static Vista_Plantilla vista_plantilla = new Vista_Plantilla();
     private static Vista_consulta_datos_socio vista_datosSocio = new Vista_consulta_datos_socio();
+    private static Vista_Actividades vista_Actividades = new Vista_Actividades();
     
     private String id_actual = "";
     
@@ -60,7 +59,6 @@ public class Controlador {
         vista_Monitor.setVisible(false);
         vista_Recepcionista.setVisible(false);
         vista_Socio.setVisible(false);
-        vista_darbaja.setVisible(false);
         vista_anadirActividad.setVisible(false);
         vista_enviar_valoraciones_negativas.setVisible(false);
         vista_Valoraciones.setVisible(false);
@@ -83,7 +81,6 @@ public class Controlador {
         vista_Monitor.setLocationRelativeTo(null);
         vista_Recepcionista.setLocationRelativeTo(null);
         vista_Socio.setLocationRelativeTo(null);
-        vista_darbaja.setLocationRelativeTo(null);
         vista_datosSocio.setLocationRelativeTo(null);
     }
     
@@ -179,28 +176,36 @@ public class Controlador {
         vista_Director.setVisible(true);
     }
     
-    public void mostrar_pantalla_socio(){
+    public void mostrar_pantalla_socio(String id){
+        vista_Actividades.setVisible(false);
         vista_socio_inicio_sesion.setVisible(false);
         vista_Socio.setVisible(true);
+        vista_Socio.recibirIdSocio(id);
     }
-    public void mostrar_pantalla_dardebaja(){
+    public void mostrar_pantalla_Actividades(){
         vista_Socio.setVisible(false);
-        vista_darbaja.setVisible(true);
-        
+        vista_Actividades.setVisible(true);
+        vista_Actividades.cargarDatos();
     }
+    
     
     public void mostrar_pantalla_anadir_actividad() {
         vista_anadirActividad.setVisible(true);
     }
     
-    public void mostrar_pantalla_consultarSocio() {
-        vista_Recepcionista.setVisible(false);
-        vista_datosSocio.setVisible(true);
-    }
+    
     public void mostrar_pantalla_consultarSocio(String socio) {
         vista_datosSocio.introduce_socio(socio);
         vista_Recepcionista.setVisible(false);
         vista_datosSocio.setVisible(true);
+    }
+    
+    public void mostrar_pantalla_actividadesSocio(String socio) {
+        vista_Actividades.actualizaIdSocio(socio);
+        vista_Socio.setVisible(false);
+        vista_Actividades.cargarDatos();
+        vista_Actividades.setVisible(true);
+        
     }
     
     public void enviar_DatosBajasEntrenadores(String fecha, String motivo) {
@@ -235,5 +240,23 @@ public class Controlador {
     }
     public String consulta_datos_de_un_socio(String id){
         return acceso_base.datos_de_un_socio(id);
+    }
+    public void bajaSocio(String id){
+        acceso_base.bajaSocio(id);
+    }
+    public ArrayList actividades_socio(){
+        return acceso_base.obtener_actividades_socio();
+    }
+    public int comprobar_aforo_actividad(String id){
+        return acceso_base.comprobar_aforo_actividad(id);
+    }
+    public void socio_reserva_actividad(String id_actividad,String id_socio){
+        acceso_base.socio_reserva_actividad(id_actividad, id_socio);
+    }
+    public String socio_reserva_entrenador(String id){
+        return acceso_base.socio_reserva_entrenador(id);
+    }
+    public String nombre_entrenador(String id){
+        return acceso_base.nombre_entrenador(id);
     }
 }

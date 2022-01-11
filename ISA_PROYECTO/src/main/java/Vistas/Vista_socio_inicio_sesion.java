@@ -127,10 +127,11 @@ public class Vista_socio_inicio_sesion extends javax.swing.JFrame {
 
     private void jButton_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_iniciar_sesionActionPerformed
         if(controlador.socio_correcto(jTextField1.getText(), jTextField2.getText())){
+            String txt = jTextField1.getText();
             controlador.setId_actual(jTextField1.getText());
             jTextField1.setText("");
             jTextField2.setText("");
-            controlador.mostrar_pantalla_socio();
+            controlador.mostrar_pantalla_socio(txt);
         }
         else{
             JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecto","Error",JOptionPane.ERROR_MESSAGE);

@@ -223,4 +223,129 @@ public class Acceso_Base_Datos {
         disconnect();
         return socio;
     }
+    public void bajaSocio(String id){
+        connect();
+        try {
+            this.borraActividadesSocio(id);
+            String query = "delete from socio where numero_socio = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+    }
+    public void borraActividadesSocio(String id){
+        try {
+            String query = "delete from realizan where numero_socio_socio = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public ArrayList obtener_actividades_socio(){
+        ArrayList<Actividad> actividades = new ArrayList<>();
+        Actividad actividad;
+        connect();
+        try {
+            String query = "select * from actividad";
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                actividad = new Actividad(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+                actividades.add(actividad);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return actividades;
+        
+    }
+    public int comprobar_aforo_actividad(String id){
+        connect();
+        int total = 0;
+        try {
+            String query = "SELECT count(*) FROM realizan where id_actividad_actividad = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                total = Integer.parseInt(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return total;
+    }
+    
+    public void socio_reserva_actividad(String id_actividad, String id_socio){
+        connect();
+        try {
+            String query = "insert into realizan values(" + id_actividad + "," + id_socio +")";
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        
+    }
+    public String socio_reserva_entrenador(String id_socio){
+        connect();
+        String id_entrenador=null;
+        int horas_reservadas = 0;
+        int horas_libres = 0;
+        try {
+            String query = "SELECT * FROM entrenador\n" +
+                            "WHERE (horas_libres = (SELECT MAX(horas_libres) FROM entrenador)) AND (horas_libres >= 1) ";
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                horas_reservadas = Integer.parseInt(rs.getString(1));
+                horas_libres = Integer.parseInt(rs.getString(2));
+                id_entrenador = rs.getString(3);
+            }
+            this.actualizar(id_socio,id_entrenador,horas_reservadas,horas_libres);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return id_entrenador;
+    }
+    public void actualizar(String id_socio,String id_entrenador, int horas_r,int horas_l){
+        try {
+            String query = "UPDATE socio SET id_empleado_empleado_entrenador = " + id_entrenador + " WHERE numero_socio = " + id_socio;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            String query1 = "UPDATE entrenador SET horas_libres = " + (horas_l-1) + " , horas_reservadas = " + (horas_r + 1) + " WHERE id_empleado_empleado = " + id_entrenador;
+            Statement stmnt1 = conn.createStatement();
+            ResultSet rs1 = stmnt.executeQuery(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        
+    }
+    
+    public String nombre_entrenador(String id){
+        connect();
+        String nombre = null;
+        try {
+            String query = "select nombre from empleado where id_empleado = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            nombre = rs.getString(1);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return nombre;
+    }
 }
