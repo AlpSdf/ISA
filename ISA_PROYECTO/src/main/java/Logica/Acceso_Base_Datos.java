@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jorge
  */
 public class Acceso_Base_Datos {
-    private final String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
+    private final String url = "jdbc:postgresql://127.0.0.1:5432/ISA";
     private final String user = "postgres";
-    private final String password = "1234";
+    private final String password = "password";
     private final Logger logger = Logger.getLogger(Acceso_Base_Datos.class.getName());
     private Connection conn = null;
 
@@ -400,5 +400,41 @@ public class Acceso_Base_Datos {
         }
         disconnect();
         return nombre;
+    }
+    
+    public String turno_limpiador(String id){
+        connect();
+        String turno="";
+        try {
+            String query = "select turno from limpiador where id_empleado_empleado = " + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                turno = rs.getString(1);
+            }
+            
+        } catch (SQLException ex) {
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return turno;
+    }
+    
+    public String puntuacion_monitor(String id) {
+        connect();
+        String puntuacion="";
+        try {
+            String query = "select round(avg(valoracion),0) from evalua where id_empleado_empleado_monitor=" + id;
+            Statement stmnt = conn.createStatement();
+            ResultSet rs = stmnt.executeQuery(query);
+            while(rs.next()){
+                puntuacion = rs.getString(1);
+            }
+            
+        } catch (SQLException ex) {
+            logger.log(Level.WARNING, "SQL Exception", ex);
+        }
+        disconnect();
+        return puntuacion;
     }
 }

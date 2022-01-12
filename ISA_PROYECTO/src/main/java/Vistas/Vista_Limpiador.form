@@ -33,7 +33,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ConsultarDatosSocio" linkSize="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="Turno" linkSize="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton3" linkSize="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton5" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -52,7 +52,7 @@
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="jButton5" linkSize="3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ConsultarDatosSocio" linkSize="3" min="-2" max="-2" attributes="0"/>
+              <Component id="Turno" linkSize="3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton3" linkSize="3" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="45" max="32767" attributes="0"/>
@@ -88,10 +88,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ConsultarDatosSocio">
+    <Component class="javax.swing.JButton" name="Turno">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cambio turno limpiadores"/>
+        <Property name="text" type="java.lang.String" value="Turno Limpiador"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TurnoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>

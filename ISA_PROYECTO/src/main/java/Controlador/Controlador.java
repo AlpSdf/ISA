@@ -65,7 +65,6 @@ public class Controlador {
         vista_plantilla.setVisible(false);
         vista_datosSocio.setVisible(false);
         
-        
         inicio.setLocationRelativeTo(null);
         vista_plantilla.setLocationRelativeTo(null);
         vista_Valoraciones.setLocationRelativeTo(null);
@@ -267,5 +266,13 @@ public class Controlador {
     }
     public String nombre_entrenador(String id){
         return acceso_base.nombre_entrenador(id);
+    }
+    
+    public String obtener_turno_limpiador(String id){
+        return acceso_base.turno_limpiador(id);
+    }
+    
+    public String obtener_puntuacion(String id){
+        return acceso_base.puntuacion_monitor(id);
     }
 }

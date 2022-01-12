@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author jorge
  */
 public class Vista_Limpiador extends javax.swing.JFrame {
-
+    
     private Controlador controlador = new Controlador();
     private String id_limpiador;
     
@@ -36,7 +36,7 @@ public class Vista_Limpiador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        ConsultarDatosSocio = new javax.swing.JButton();
+        Turno = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +59,12 @@ public class Vista_Limpiador extends javax.swing.JFrame {
             }
         });
 
-        ConsultarDatosSocio.setText("Cambio turno limpiadores");
+        Turno.setText("Turno Limpiador");
+        Turno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TurnoActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Bajas empleado");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -81,13 +86,13 @@ public class Vista_Limpiador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ConsultarDatosSocio)
+                    .addComponent(Turno)
                     .addComponent(jButton3)
                     .addComponent(jButton5))
                 .addGap(98, 98, 98))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ConsultarDatosSocio, jButton3, jButton5});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Turno, jButton3, jButton5});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,13 +104,13 @@ public class Vista_Limpiador extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ConsultarDatosSocio)
+                .addComponent(Turno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ConsultarDatosSocio, jButton3, jButton5});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Turno, jButton3, jButton5});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,6 +135,12 @@ public class Vista_Limpiador extends javax.swing.JFrame {
         }
         controlador.mostrar_pantalla_inicio();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void TurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TurnoActionPerformed
+        id_limpiador = JOptionPane.showInputDialog("Introduce tu id de limpiador: ");
+        String turno = controlador.obtener_turno_limpiador(id_limpiador);
+        JOptionPane.showMessageDialog(this,"Su turno actual es -->"+turno);
+    }//GEN-LAST:event_TurnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,7 +178,7 @@ public class Vista_Limpiador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ConsultarDatosSocio;
+    private javax.swing.JButton Turno;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;

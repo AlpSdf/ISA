@@ -115,8 +115,9 @@ public class Vista_Monitor extends javax.swing.JFrame {
     }//GEN-LAST:event_ConsultarDatosSocioActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.setVisible(false);
-        controlador.mostrar_valoraciones();
+        String id_monitor = JOptionPane.showInputDialog("Introduce tu id de monitor: ");
+        String puntuacion = controlador.obtener_puntuacion(id_monitor);
+        JOptionPane.showMessageDialog(this, "Su puntuacion media ha sido: "+puntuacion);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
