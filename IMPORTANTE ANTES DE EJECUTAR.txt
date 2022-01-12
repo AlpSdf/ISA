@@ -1,0 +1,11 @@
+Antes de ejecutar el programa seguir las siguientes instrucciones:
+
+--> Abrir una base de datos en postgres
+--> Cargar las tablas de la base con el archivo adjuntado en el repositorio "sql_revisado"
+--> Insertar la muestra de datos "insercion_datos"
+--> Dentro del programa en NetBeans y en la clase Acceso_Base_Datos cambiar los campos:
+url "jdbc:postgresql://127.0.0.1:5432/nombre de la base"; user con el usuario de postgres usado y password con su contraseña
+para poder establecer conexion con postgres
+--> Ejecutar la clase Controlador para poder probar el programa
+
+--> NOTA: Los IDs y passwords para iniciar sesión se encuentran visibles en la base de datos

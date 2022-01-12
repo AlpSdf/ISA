@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.3-beta1" use-changelog="false" last-position="453,569" last-zoom="1" max-obj-count="15"
+	 default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="empleado" layer="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="640" y="20"/>
+	<column name="telefono">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="salario">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="fecha_nacimiento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dni">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="id_empleado" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="contraseña">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="Empleado_pk" type="pk-constr" table="public.empleado">
+		<columns names="id_empleado" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="monitor" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="120" y="320"/>
+	<column name="turno">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[mañana o tarde]]></comment>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_actividad_actividad" index="1"/>
+		<object name="id_empleado_empleado" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="actividad_fk" index="2"/>
+		<object name="empleado_fk" index="1"/>
+		<object name="monitor_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="limpiador" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="580" y="240"/>
+	<column name="turno">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[mañana o tarde]]></comment>
+	</column>
+	<column name="zonas_asignadas">
+		<type name="varchar" length="40"/>
+		<comment><![CDATA[zonas separadas por comas]]></comment>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_empleado_empleado" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="empleado_fk" index="1"/>
+		<object name="limpiador_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="recepcionista" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="360"/>
+
+	<customidxs object-type="column">
+		<object name="id_empleado_empleado" index="0"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="empleado_fk" index="1"/>
+		<object name="recepcionista_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="entrenador" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1180" y="220"/>
+	<column name="horas_reservadas">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="horas_libres">
+		<type name="integer" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_empleado_empleado" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="empleado_fk" index="1"/>
+		<object name="entrenador_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="actividad" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1480" y="560"/>
+	<column name="id_actividad" not-null="true">
+		<type name="bigserial" length="20"/>
+	</column>
+	<column name="tipo">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Puede ser: cardio, fuerza o piscina
+]]></comment>
+	</column>
+	<column name="horario">
+		<type name="time" length="0"/>
+	</column>
+	<column name="aforo_max">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sala">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="Actividad_pk" type="pk-constr" table="public.actividad">
+		<columns names="id_actividad" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="socio" layer="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="120" y="800"/>
+	<column name="numero_socio" not-null="true">
+		<type name="bigserial" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="telefono">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="email">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="tipo_cuota">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Puede ser: estudiante, jubilado, familiar o estándar]]></comment>
+	</column>
+	<column name="numero_cuenta_bancaria">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="contraseña">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="Socio_pk" type="pk-constr" table="public.socio">
+		<columns names="numero_socio" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_empleado_empleado_entrenador" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="entrenador_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="realizan" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<position x="940" y="860"/>
+
+	<customidxs object-type="column">
+		<object name="id_actividad_actividad" index="0"/>
+		<object name="numero_socio_socio" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="actividad_fk" index="0"/>
+		<object name="socio_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="Socio_has_many_many_Socio_has_many_Actividad" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.socio"
+	 dst-table="public.realizan"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Actividad_has_many_many_Socio_has_many_Actividad" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.actividad"
+	 dst-table="public.realizan"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Hija" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#c63f1b"
+	 src-table="public.empleado"
+	 dst-table="public.monitor"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="evalua" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<position x="200" y="580"/>
+	<column name="valoracion">
+		<type name="integer" length="0"/>
+		<comment><![CDATA[Nota del 1 al 5]]></comment>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_empleado_empleado_monitor" index="2"/>
+		<object name="numero_socio_socio" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="evalua_pk" index="0"/>
+		<object name="monitor_fk" index="2"/>
+		<object name="socio_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="Monitor_has_many_many_Monitor_has_many_Socio" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.monitor"
+	 dst-table="public.evalua"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="Socio_has_many_many_Monitor_has_many_Socio" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.socio"
+	 dst-table="public.evalua"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="imparte" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<position x="920" y="620"/>
+	<column name="fecha">
+		<type name="date" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="id_actividad_actividad" index="1"/>
+		<object name="id_empleado_empleado_monitor" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="actividad_fk" index="0"/>
+		<object name="monitor_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="Actividad_has_many_many_Actividad_has_many_Monitor" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.actividad"
+	 dst-table="public.imparte"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Monitor_has_many_many_Actividad_has_many_Monitor" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.monitor"
+	 dst-table="public.imparte"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="especialidad" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#6603be"
+	 src-table="public.actividad"
+	 dst-table="public.monitor"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Hija2" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#56a237"
+	 src-table="public.empleado"
+	 dst-table="public.limpiador"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="Hija3" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#ff6caa"
+	 src-table="public.empleado"
+	 dst-table="public.recepcionista"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="Hija4" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d14e59"
+	 src-table="public.empleado"
+	 dst-table="public.entrenador"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="Asigna" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#74ec46"
+	 src-table="public.entrenador"
+	 dst-table="public.socio"
+	 src-required="false" dst-required="false"/>
+
+<table name="director" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1240" y="100"/>
+</table>
+
+<relationship name="Hija5" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#724731"
+	 src-table="public.empleado"
+	 dst-table="public.director"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+</dbmodel>

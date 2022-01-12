@@ -1,0 +1,93 @@
+--código de inserción de datos:
+
+insert into actividad values (1,'cardio','10:00',10,1);
+insert into actividad values (2,'fuerza','12:00',5,2);
+insert into actividad values (3,'piscina','14:00',20,1);
+insert into actividad values (4,'cardio','16:00',4,3);
+insert into actividad values (5,'fuerza','18:00',2,2);
+insert into actividad values (6,'piscina','20:00',8,4);
+insert into actividad values (7,'piscina','12:00',10,3);
+insert into actividad values (8,'cardio','18:00',10,1);
+
+insert into empleado values('634104321',1450,'Pedro Ramirez Perez','12-03-1983','08327839R',1,'password1');
+insert into empleado values('633385342',1500,'Alfonso Lopez Garcia','04-08-1995','09028136L',2,'password2');
+insert into empleado values('631328610',1100,'David Gil Manzano','14-08-1971','014781236M',3,'password3');
+insert into empleado values('639103113',1000,'Rafael Perez Benitez','15-07-1982','019284381N',4,'password4');
+insert into empleado values('631039418',1000,'Maria Delgado Martinez','15-09-1988','019147128N',5,'password5');
+insert into empleado values('690395210',1400,'Sandra Martinez Manzano','01-03-1998','193313891L',6,'password6');
+insert into empleado values('691031932',1500,'Manolo Ramirez Rodriguez','16-02-1993','081231476R',7,'password7');
+insert into empleado values('641039158',1800,'Mario Garcia Lorenzo','10-10-1969','083312894G',8,'password8');
+insert into empleado values('691038581',2000,'Alba Gracia Lorenzo','08-05-1964','083901281P',9,'password9');
+insert into empleado values('631038693',1450,'Manuel Blanco Rodriguez','12-03-1983','18327839S',10,'password10');
+insert into empleado values('634591021',1600,'Raquel Sanchez Garcia','20-06-1977','01312839S',11,'password11');
+insert into empleado values('613013419',1850,'David Canovas Martinez','01-12-1979','01312819T',12,'password12');
+
+insert into director values(9);
+insert into entrenador values(5,2,1);
+insert into entrenador values(10,0,2);
+insert into entrenador values(3,6,3);
+insert into recepcionista values(4);
+insert into recepcionista values(5);
+insert into limpiador values('mañana','recepcion,sala 1, sala 2',6);
+insert into limpiador values('tarde','piscina,sala 3, sala 4',7);
+insert into monitor values('mañana',1,8);
+insert into monitor values('tarde',6,10);
+insert into monitor values('mañana',3,11);
+insert into monitor values('tarde',8,12);
+
+insert into socio values (1,'Juan Rodriguez','634124891','juan@outlook.com','estudiante','ES1234522683423',null,'password1');
+insert into socio values (2,'Marina Luque','920131901','marina@outlook.com','jubilado','ES9430042496463',1,'password2');
+insert into socio values (3,'Eleuterio Vasquez','610124813','eleuterio@outlook.com','estudiante','ES1601821969854',2,'password3');
+insert into socio values (4,'Mariam Sancho','664124893','mariam@outlook.com','jubilado','ES2531909482129',2,'password4');
+insert into socio values (5,'Sílvia Agullo','920124181','silvia@outlook.com','familiar','ES7201825544381',null,'password5');
+insert into socio values (6,'Meritxell Bonilla','910341781','meritxell@outlook.com','estandar','ES6230044649214',null,'password6');
+insert into socio values (7,'Richard Guerrero','689341081','richard@outlook.com','estandar','ES0720381212201',3,'password7');
+insert into socio values (8,'Paul Menendez','634891231','paul@outlook.com','estudiante','ES2204871237432',null,'password8');
+insert into socio values (9,'Yaiza Alarcon','634901385','yaiza@outlook.com','familiar','ES4400751213355',1,'password9');
+insert into socio values (10,'Macarena Hernández','683109183','macarena@outlook.com','familiar','ES3904872128119',1,'password10');
+insert into socio values (11,'Julen Menendez','690137189','julen@outlook.com','estudiante','ES9204873312421',null,'password11');
+insert into socio values (12,'Nelson Pavon','6348104780','nelson@outlook.com','estandar','ES5831907774906',null,'password12');
+insert into socio values (13,'Glória Cuadrado','634901236','gloria@outlook.com','estudiante','ES9804877336485',2,'password13');
+insert into socio values (14,'Aina Rodriguez','637431082','aina@outlook.com','estandar','ES3520389897197',2,'password14');
+insert into socio values (15,'Gaizka Alcalde','632901385','gaizka@outlook.com','estandar','ES4731904277965',null,'password15');
+
+insert into imparte values('11-11-2021',2,8);
+insert into imparte values('19-11-2021',2,8);
+insert into imparte values('21-12-2021',2,8);
+insert into imparte values('15-11-2021',1,8);
+insert into imparte values('18-11-2021',1,8);
+insert into imparte values('13-11-2021',7,8);
+insert into imparte values('10-11-2021',1,11);
+insert into imparte values('21-11-2021',2,11);
+insert into imparte values('28-12-2021',2,11);
+insert into imparte values('29-12-2021',7,11);
+insert into imparte values('20-12-2021',7,11);
+insert into imparte values('18-12-2021',3,10);
+insert into imparte values('28-12-2021',3,10);
+insert into imparte values('17-12-2021',5,10);
+insert into imparte values('18-12-2021',6,10);
+insert into imparte values('03-11-2021',6,10);
+insert into imparte values('27-12-2021',8,12);
+insert into imparte values('24-11-2021',5,12);
+insert into imparte values('20-04-2021',3,12);
+insert into imparte values('25-10-2021',4,12);
+
+insert into realizan values(1,4);
+insert into realizan values(1,7);
+insert into realizan values(2,10);
+insert into realizan values(3,14);
+insert into realizan values(3,10);
+insert into realizan values(4,12);
+insert into realizan values(5,5);
+insert into realizan values(6,4);
+insert into realizan values(7,10);
+insert into realizan values(8,8);
+
+insert into evalua values(2,4,8);
+insert into evalua values(5,4,10);
+insert into evalua values(1,10,11);
+insert into evalua values(3,12,12);
+insert into evalua values(3,8,12);
+insert into evalua values(4,5,10);
+
+
