@@ -230,9 +230,7 @@ public class Acceso_Base_Datos {
             String query = "delete from socio where numero_socio = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (SQLException ex) {}
         disconnect();
     }
     public void bajaLimpiador(String id){
@@ -241,9 +239,7 @@ public class Acceso_Base_Datos {
             String query = "delete from limpiador where id_empleado_empleado = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (SQLException ex) {}
         disconnect();
     }
     public void bajaMonitor(String id){
@@ -252,9 +248,7 @@ public class Acceso_Base_Datos {
             String query = "delete from monitor where id_empleado_empleado = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (SQLException ex) {}
         disconnect();
     }
     public void borraActividadesSocio(String id){
@@ -262,9 +256,7 @@ public class Acceso_Base_Datos {
             String query = "delete from realizan where numero_socio_socio = " + id;
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(Acceso_Base_Datos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (SQLException ex) {}
     }
     public ArrayList obtener_actividades_socio(){
         ArrayList<Actividad> actividades = new ArrayList<>();
@@ -308,9 +300,7 @@ public class Acceso_Base_Datos {
             String query = "insert into realizan values(" + id_actividad + "," + id_socio +")";
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
-        } catch (SQLException ex) {
-            logger.log(Level.WARNING, "SQL Exception", ex);
-        }
+        } catch (SQLException ex) {}
         disconnect();
         
     }
@@ -366,9 +356,7 @@ public class Acceso_Base_Datos {
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
             
-        } catch (SQLException ex) {
-            logger.log(Level.WARNING, "SQL Exception", ex);
-        }
+        } catch (SQLException ex) {}
         
     }
     public void actualizarentrenador(String id_entrenador, int horas_r,int horas_l){
@@ -377,9 +365,7 @@ public class Acceso_Base_Datos {
             Statement stmnt = conn.createStatement();
             ResultSet rs = stmnt.executeQuery(query);
             
-        } catch (SQLException ex) {
-            logger.log(Level.WARNING, "SQL Exception", ex);
-        }
+        } catch (SQLException ex) {}
         
     }
     
